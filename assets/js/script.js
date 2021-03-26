@@ -3,7 +3,6 @@ var HourBackground = $("textarea");
 var content = $("description");
 var Save = $("fa-save");
 
-
 //Page Clock
 function Time() {
     var RightNow = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
@@ -31,17 +30,14 @@ function UpdateTimeColor() {
 
 function SaveData () {
     // console.log("Hello World");
-    var userInput = ($(this)).siblings(".description").val();
-    var inputId = ($(this)).parent("div").attr("id");
-    window.localStorage.setItem(inputId , userInput);
-
-    console.log(inputId);
-    console.log(userInput);
+    var UserText = ($(this)).siblings(".description").val();
+    var UserKey = ($(this)).parent("div").attr("id");
+    window.localStorage.setItem(UserKey, UserText);
 };
 
 function loadSave() {
     var Hours = [
-        "hour-9", //0
+        "hour-9", 
         "hour-10", 
         "hour-11", 
         "hour-12", 
@@ -49,12 +45,12 @@ function loadSave() {
         "hour-14", 
         "hour-15", 
         "hour-16", 
-        "hour-17", //8
+        "hour-17", 
     ];
     for(i=0; i < 9; i++) {
         var LastInput = window.localStorage.getItem(Hours[i]);
         if(LastInput == null) return;
-        console.log(LastInput); //display on screen
+        console.log(LastInput);
         $("#" + Hours[i] + " > textarea").val(LastInput);
     };
     
